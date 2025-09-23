@@ -1,0 +1,26 @@
+# Visual Studio IDE
+**/.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+*.ilk
+*.obj
+*.pdb
+*.ipch
+*.exe
+*.dll
+*.lib
+*.idb
+*.tlog
+*.log
+*.cache
