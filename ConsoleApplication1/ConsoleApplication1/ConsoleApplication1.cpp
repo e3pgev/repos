@@ -15,26 +15,6 @@ const char* MENU[] =
 static int NUM_MENU_ITEMS = sizeof(MENU) / sizeof(MENU[0]);
 
 
-void printColored(const char* text, bool IS_IT_COSORED)
-{
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	// Сохраняем текущий цвет
-	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	GetConsoleScreenBufferInfo(hConsole, &csbi);
-	WORD oldColor = csbi.wAttributes;
-	if (!IS_IT_COSORED)
-	{
-		cout << text << endl;
-	}
-	else
-	{
-		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY);
-		cout << text << endl;
-		SetConsoleTextAttribute(hConsole, oldColor);
-	}
-}
-
-
 void darwMenu(int ACTIVE_MENU_ITEM)
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -43,7 +23,20 @@ void darwMenu(int ACTIVE_MENU_ITEM)
 
 	for (int i = 0; i < NUM_MENU_ITEMS; i++)
 	{
-		printColored(MENU[i], i == ACTIVE_MENU_ITEM);
+		CONSOLE_SCREEN_BUFFER_INFO csbi;
+		GetConsoleScreenBufferInfo(hConsole, &csbi);
+		WORD oldColor = csbi.wAttributes;
+
+		if (i == ACTIVE_MENU_ITEM)
+		{
+			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY);
+			cout << MENU[i] << endl;
+			SetConsoleTextAttribute(hConsole, oldColor);
+		}
+		else
+		{
+			cout << MENU[i] << endl;
+		}
 	}
 }
 
