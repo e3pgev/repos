@@ -1,6 +1,7 @@
 #include "main_menu.h"
 #include <iostream>
 #include <windows.h>
+#include "cursor_DVD.h"
 
 using namespace std;
 
@@ -47,6 +48,7 @@ void drawMenu(int ACTIVE_MENU_ITEM)
 void selectedItem(int ACTIVE_MENU_ITEM)
 {
 	system("cls");
-	cout << "You selected: " << MENU[ACTIVE_MENU_ITEM] << endl;
-	system("pause");
+	cout << "Press Esc to escape" << endl;
+	cursorDVD();
+	system("cls");
 }
